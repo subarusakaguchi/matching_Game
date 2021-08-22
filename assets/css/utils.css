@@ -1,0 +1,70 @@
+/* Card Design */
+.card{
+    width: 100rem;
+    height: 150rem;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform .5s;
+}
+
+.cardFront, .cardBack {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.45);
+    position: absolute;
+}
+
+.cardFront {
+    transform: rotateY(180deg);
+    background-color: var(--darkBlue);
+}
+
+.cardBack {
+    color: var(--darkBlue);
+    background-color: var(--lightBlue);
+    font-size: 40rem;
+}
+
+.flip {
+    transform: rotateY(180deg);
+}
+
+/* Game Board */
+#gameBoard {
+    max-width: 700rem;
+    display: grid;
+    grid-template: 1fr 1fr 1fr 1fr 1fr / 1fr 1fr 1fr 1fr;
+    gap: 20px;
+}
+
+/* Tela de Game Over */
+#gameOver {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: var(--transparentBlack);
+    color: white;
+    font-size: clamp(45px, 4vw, 50rem);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    top: 0;
+}
+
+#restart {
+    padding: 20rem;
+    font-size: 20rem;
+    background-color: var(--lightBlue);
+    border-radius: 10px;
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+#restart:hover {
+    background-color: var(--yellow);
+}

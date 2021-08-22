@@ -1,0 +1,29 @@
+* {
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    box-sizing: border-box;
+    outline: none;
+    border: none;
+    outline: none;
+}
+
+html {
+    --mainFont: 'Righteous', sans-serif;
+    --darkBlue: #101c2c;
+    --lightBlue: #05c3ff;
+    --transparentBlack: rgba(0, 0, 0, 0.9);
+    --yellow: yellow;
+    --lightGrey: #9aa1a1;
+
+    font-size: 6.25%;
+}
+
+body {
+    font-family: var(--mainFont);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: var(--lightGrey);
+}
