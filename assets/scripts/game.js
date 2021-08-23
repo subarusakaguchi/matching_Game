@@ -1,61 +1,57 @@
-const FRONT = "cardFront"
-const BACK = "cardBack"
-let cards = null
-let techs = [
-    'bootstrap',
-    'css',
-    'electron',
-    'firebase',
-    'html',
-    'javascript',
-    'jquery',
-    'mongo',
-    'node',
-    'react'
-]
+let game = {
+    techs: [
+        'bootstrap',
+        'css',
+        'electron',
+        'firebase',
+        'html',
+        'javascript',
+        'jquery',
+        'mongo',
+        'node',
+        'react'
+    ],
 
-startGame()
+    cards: null,
 
-function startGame() {
-    cards = createCards(techs)
-    shuffleCards(cards)
-    console.log(cards)
-}
+    createCards: function (techs) {
+        this.cards = []
 
-function shuffleCards(cards) {
-    let currentIndex = cards.length
-    let randomIndex = 0
+        this.techs.forEach((tech) => {
+            this.cards.push(this.createPair(tech))
+        })
+    
+        this.cards = this.cards.flatMap(pair => pair)
+        this.shuffleCards()
 
-    while (currentIndex !== 0) {
-        randomIndex = Math.floor(Math.random() * currentIndex)
-        currentIndex--
-        
-        [cards[randomIndex], cards[currentIndex]] = [cards[currentIndex], cards[randomIndex]]
+        return this.cards
+    },
+    
+    createPair: function (tech) {
+        return [{
+            id: this.createId(tech),
+            icon: tech,
+            flipped: false
+        }, {
+            id: this.createId(tech),
+            icon: tech,
+            flipped: false
+        }]
+    },
+    
+    createId: function (tech){
+        return tech + parseInt(Math.random() * 1000)
+    },
+
+    shuffleCards: function (cards) {
+        let currentIndex = this.cards.length
+        let randomIndex = 0
+    
+        while (currentIndex !== 0) {
+            randomIndex = Math.floor(Math.random() * currentIndex)
+            currentIndex--
+            
+            [this.cards[randomIndex], this.cards[currentIndex]] = [this.cards[currentIndex], this.cards[randomIndex]]
+        }
     }
-}
-
-function createCards(techs) {
-    let cards = []
-
-    for(let tech of techs) {
-        cards.push(createPair(tech))
-    }
-
-    return cards.flatMap(pair => pair)
-}
-
-function createPair(tech) {
-    return [{
-        id: createId(tech),
-        icon: tech,
-        flipped: false
-    }, {
-        id: createId(tech),
-        icon: tech,
-        flipped: false
-    }]
-}
-
-function createId(tech){
-    return tech + parseInt(Math.random() * 1000)
 }
