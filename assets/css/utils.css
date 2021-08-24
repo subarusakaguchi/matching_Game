@@ -1,3 +1,21 @@
+/* Headder */
+#plays, #score {
+    font-family: var(--secondaryFont);
+    font-weight: bold;
+    font-size: clamp(30px, 4vw, 36rem);
+    color: var(--darkBlue);
+}
+
+/* Body */
+#main {
+    font-family: var(--mainFont);
+    display: flex;
+    justify-content: center;
+    padding-top: 150px;
+    height: 100vh;
+    background-color: var(--lightGrey);
+}
+
 /* Card Design */
 .card{
     width: 100rem;
@@ -38,7 +56,7 @@
 #gameBoard {
     max-width: 700rem;
     display: grid;
-    grid-template: 1fr 1fr 1fr 1fr 1fr / 1fr 1fr 1fr 1fr;
+    grid-template: 1fr 1fr 1fr 1fr / 1fr 1fr 1fr 1fr 1fr;
     gap: 20px;
 }
 

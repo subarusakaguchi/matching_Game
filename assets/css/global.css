@@ -10,6 +10,7 @@
 
 html {
     --mainFont: 'Righteous', sans-serif;
+    --secondaryFont: Luminari, fantasy;
     --darkBlue: #101c2c;
     --lightBlue: #05c3ff;
     --transparentBlack: rgba(0, 0, 0, 0.9);
@@ -19,11 +20,22 @@ html {
     font-size: 6.25%;
 }
 
-body {
-    font-family: var(--mainFont);
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
-    height: 100vh;
-    background-color: var(--lightGrey);
+    background-color: var(--lightBlue);
+    padding: 20px 0 20px 0;
+    border: 1px solid var(--darkBlue);
+    z-index: 10000;
+}
+
+h1 {
+    font-family: var(--mainFont);
+    font-size: clamp(48px, 6vw, 52rem);
+    color: var(--darkBlue);
 }

@@ -16,16 +16,34 @@
 </head>
 <body>
 
-    <div id="gameBoard">
-        
-    </div>
-
-
-    <div id="gameOver">
-        <div>
-            Parabéns, você venceu!
+    <header>
+        <div id="plays">
+            <div id="timer">
+                Tempo: 0s
+            </div>
+            
+            <div id="playsCount">
+                Jogadas: 0
+            </div>
         </div>
-        <button id="restart" onclick="restart()">Jogar Novamente!</button>
+
+        <h1>Jogo da Memória</h1>
+
+        <div id="score">
+            Pontos: 0
+        </div>
+    </header>
+
+    <div id="main">
+        <div id="gameBoard">
+        
+        </div>
+        <div id="gameOver">
+            <div>
+                Parabéns, você venceu!
+            </div>
+            <button id="restart" onclick="restart()">Jogar Novamente!</button>
+        </div>
     </div>
 
     <script src="./assets/scripts/interface.js"></script>

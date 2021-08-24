@@ -1,5 +1,6 @@
 function initializeCards(cards) {
     let gameBoard = document.getElementById('gameBoard')
+    gameBoard.innerHTML = ''
 
     cards.forEach(card => {
         let cardElement = document.createElement('div')
@@ -31,5 +32,48 @@ function createCardFace(face, card, element) {
 }
 
 function flipCard() {
-    this.classList.add('flip')
+    if (game.setCard(this.id)) {
+        this.classList.add('flip')
+        if (game.cards.filter(card => !card.flipped).length == (game.cards.length - 1)) {
+            timeCountStart()
+        }
+        if (game.secondCard) {
+            if (game.checkMatch()) {
+                game.clearCards()
+                if (game.checkGameOver()) {
+                    let gameOverLayer = document.getElementById('gameOver')
+
+                    gameOverLayer.style.display = 'flex'
+                }
+            } else {
+                setTimeout(() => {
+                    let firstCardScreen = document.getElementById(game.firstCard.id)
+                    let secondCardScreen = document.getElementById(game.secondCard.id)
+        
+                    firstCardScreen.classList.remove('flip')
+                    secondCardScreen.classList.remove('flip')
+
+                    game.unflipCards()
+                }, 500);
+            }
+        }
+    }
+}
+
+function restart() {
+    let gameOverLayer = document.getElementById('gameOver')
+
+    game.clearCards()
+    startGame()
+
+    gameOverLayer.style.display = 'none'
+}
+
+function timeCountStart() {
+    let timer = document.getElementById('timer')
+
+    setInterval(() => {
+        timer.innerHTML = `Tempo: ${game.timeCount}s`
+        game.timeCount++
+    }, 1000);
 }
