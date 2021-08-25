@@ -1,3 +1,13 @@
+function interval() {
+    let interval = setInterval(() => {
+        let timer = document.getElementById('timer')
+        timer.innerHTML = `Tempo: ${game.timeCount}s`
+        game.timeCount++
+    } , 1000)
+
+    return interval
+}
+
 function initializeCards(cards) {
     let gameBoard = document.getElementById('gameBoard')
     gameBoard.innerHTML = ''
@@ -36,7 +46,7 @@ function flipCard() {
         this.classList.add('flip')
         if (game.cards.filter(card => !card.flipped).length === 19 && game.playCount === 0) {
             game.isPlaying = true
-            setTimer()
+            interval()
         }
         if (game.secondCard) {
             if (game.checkMatch()) {
@@ -64,6 +74,10 @@ function flipCard() {
     }
 }
 
+function timerStop() {
+    clearInterval(interval())
+}
+
 function restart() {
     let gameOverLayer = document.getElementById('gameOver')
     game.score = 0
@@ -76,21 +90,6 @@ function restart() {
     playCount()
 
     gameOverLayer.style.display = 'none'
-}
-
-function setTimer() {
-    let timer = document.getElementById('timer')
-    let interval = setInterval(() => {
-        timer.innerHTML = `Tempo: ${game.timeCount}s`
-        game.timeCount++
-    }, 1000);
-
-    if (game.isPlaying) {
-        interval
-    } else {
-        console.log('Eu aqui')
-        clearInterval(interval)
-    }
 }
 
 function playCount() {
