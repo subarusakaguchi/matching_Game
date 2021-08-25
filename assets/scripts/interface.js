@@ -34,12 +34,14 @@ function createCardFace(face, card, element) {
 function flipCard() {
     if (game.setCard(this.id)) {
         this.classList.add('flip')
-        if (game.cards.filter(card => !card.flipped).length == (game.cards.length - 1)) {
-            timeCountStart()
+        if (game.cards.filter(card => !card.flipped).length === 19 && game.playCount === 0) {
+            game.isPlaying = true
+            setTimer()
         }
         if (game.secondCard) {
             if (game.checkMatch()) {
                 game.clearCards()
+                addScore()
                 if (game.checkGameOver()) {
                     let gameOverLayer = document.getElementById('gameOver')
 
@@ -54,6 +56,8 @@ function flipCard() {
                     secondCardScreen.classList.remove('flip')
 
                     game.unflipCards()
+                    
+                    playCount()
                 }, 500);
             }
         }
@@ -62,18 +66,41 @@ function flipCard() {
 
 function restart() {
     let gameOverLayer = document.getElementById('gameOver')
+    game.score = 0
+    game.timeCount = 0
+    game.playCount = 0
 
     game.clearCards()
     startGame()
+    addScore()
+    playCount()
 
     gameOverLayer.style.display = 'none'
 }
 
-function timeCountStart() {
+function setTimer() {
     let timer = document.getElementById('timer')
-
-    setInterval(() => {
+    let interval = setInterval(() => {
         timer.innerHTML = `Tempo: ${game.timeCount}s`
         game.timeCount++
     }, 1000);
+
+    if (game.isPlaying) {
+        interval
+    } else {
+        console.log('Eu aqui')
+        clearInterval(interval)
+    }
+}
+
+function playCount() {
+    let playCount = document.getElementById('playCount')
+    game.playCount++
+    playCount.innerHTML = `Jogadas: ${game.playCount}`
+}
+
+function addScore() {
+    let score = document.getElementById('score')
+    game.score += game.points
+    score.innerHTML = `Pontos: ${game.score}`
 }

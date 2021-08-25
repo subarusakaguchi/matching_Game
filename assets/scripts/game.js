@@ -1,11 +1,15 @@
 let game = {
 
     lockMode: false,
+    isPlaying: false,
     firstCard: null,
     secondCard: null,
     cards: null,
-    timeCount: 1,
+    timeCount: 0,
     playCount: 0,
+    score: 0,
+    points: 200,
+    bonusPoints: 5000,
     techs: [
         'bootstrap',
         'css',
@@ -100,6 +104,10 @@ let game = {
     },
 
     checkGameOver: function () {
-        return this.cards.filter(card => !card.flipped).length == 0
+        if (this.cards.filter(card => !card.flipped).length == 0) {
+            game.isPlaying = false
+            setTimer()
+            return true
+        }
     }
 }
