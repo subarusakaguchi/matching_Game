@@ -105,7 +105,7 @@ let game = {
 
     checkGameOver: function () {
         if (this.cards.filter(card => !card.flipped).length == 0) {
-            game.isPlaying = false
+            this.isPlaying = false
             return true
         }
     }

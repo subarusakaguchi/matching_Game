@@ -50,6 +50,7 @@ function flipCard() {
             if (game.checkMatch()) {
                 game.clearCards()
                 addScore()
+                attScore()
                 if (game.checkGameOver()) {
                     let gameOverLayer = document.getElementById('gameOver')
 
@@ -65,7 +66,8 @@ function flipCard() {
 
                     game.unflipCards()
                     
-                    playCount()
+                    addPlayCount()
+                    attPlayCount()
                 }, 500);
             }
         }
@@ -79,21 +81,29 @@ function restart() {
     game.playCount = 0
 
     game.clearCards()
+    attTimer()
+    attPlayCount()
+    attScore()
     startGame()
-    addScore()
-    playCount()
 
     gameOverLayer.style.display = 'none'
 }
 
-function playCount() {
+function attTimer() {
+    let timer = document.getElementById('timer')
+    timer.innerHTML = `Tempo: ${game.timeCount}s`
+}
+
+function attPlayCount() {
     let playCount = document.getElementById('playCount')
-    game.playCount++
     playCount.innerHTML = `Jogadas: ${game.playCount}`
 }
 
-function addScore() {
+function attScore() {
     let score = document.getElementById('score')
-    game.score += game.points
     score.innerHTML = `Pontos: ${game.score}`
 }
+
+addPlayCount = () => game.playCount++
+
+addScore = () => game.score += game.points
