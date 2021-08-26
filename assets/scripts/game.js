@@ -9,7 +9,7 @@ let game = {
     playCount: 0,
     score: 0,
     points: 200,
-    bonusPoints: 5000,
+    bonusPoints: 3000,
     techs: [
         'bootstrap',
         'css',

@@ -53,7 +53,7 @@ function flipCard() {
                 attScore()
                 if (game.checkGameOver()) {
                     let gameOverLayer = document.getElementById('gameOver')
-
+                    calcFinalScore()
                     gameOverLayer.style.display = 'flex'
                 }
             } else {
@@ -65,6 +65,10 @@ function flipCard() {
                     secondCardScreen.classList.remove('flip')
 
                     game.unflipCards()
+
+                    if (game.timeCount > 30) {
+                        game.points = 150
+                    }
                     
                     addPlayCount()
                     attPlayCount()
@@ -72,6 +76,14 @@ function flipCard() {
             }
         }
     }
+}
+
+function calcFinalScore() {
+    let finalScore = document.getElementById('finalScore')
+    let totBonus = Math.floor((game.bonusPoints - (game.timeCount * 10)) / (game.playCount / 10))
+    finalScore.innerHTML = `Pontos Feitos = ${game.score}<br>`
+    finalScore.innerHTML += `Bônus: (${game.bonusPoints} - (${game.timeCount} x 10)) / (${game.playCount} / 10) = ${totBonus}<br>`
+    finalScore.innerHTML += `Total = ${totBonus + game.score}`
 }
 
 function restart() {
