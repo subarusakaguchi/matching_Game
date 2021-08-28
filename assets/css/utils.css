@@ -68,7 +68,7 @@
     background-color: var(--transparentBlack);
     color: var(--yellow);
     font-size: clamp(45px, 4vw, 50rem);
-    display: flex;
+    display: none;
     justify-content: center;
     align-items: center;
     flex-direction: column;
@@ -85,7 +85,7 @@
 
 /* Botões */
 .btn {
-    display: flex;
+    display: none;
     padding: 20rem;
     font-size: 20rem;
     font-weight: bolder;
@@ -127,7 +127,7 @@
 }
 
 #addRank {
-    display: flex;
+    display: none;
     flex-direction: column;
     align-items: center;
     font-size: clamp(28px, 3vw, 32rem);

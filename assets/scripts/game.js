@@ -12,11 +12,11 @@ let game = {
     bonusPoints: 3000,
     totalScore: 3750,
     ranking: [
-        {nome: 'João', pontos: 4000},
-        {nome: 'Pedro', pontos: 3800},
-        {nome: 'Maria', pontos: 3700},
-        {nome: 'Letícia', pontos: 3500},
-        {nome: 'Adonivaldo', pontos: 3400}
+        {nome: 'João', pontos: 5000},
+        {nome: 'Pedro', pontos: 5000},
+        {nome: 'Maria', pontos: 5000},
+        {nome: 'Letícia', pontos: 5000},
+        {nome: 'Adonivaldo', pontos: 5000}
     ],
     techs: [
         'bootstrap',
