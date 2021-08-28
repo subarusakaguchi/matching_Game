@@ -1,3 +1,10 @@
+onload = function () {
+    let rankTemp = JSON.parse(localStorage.getItem('rank'))
+    if (rankTemp != null && rankTemp != undefined) {
+        game.ranking = rankTemp
+    }
+}
+
 function initializeCards(cards) {
     let gameBoard = document.getElementById('gameBoard')
     gameBoard.innerHTML = ''
@@ -84,6 +91,8 @@ function flipCard() {
                                 restartFromRank.style.display = 'flex'
 
                                 showRank()
+                                saveRank()
+                                rankingName.value = ''
                             })
                         }, 2000);
 
@@ -109,6 +118,10 @@ function flipCard() {
             }
         }
     }
+}
+
+function saveRank() {
+    localStorage.setItem('rank', JSON.stringify(game.ranking))
 }
 
 function showRank() {
@@ -170,3 +183,5 @@ function attScore() {
 addPlayCount = () => game.playCount++
 
 addScore = () => game.score += game.points
+
+clearSave = () => localStorage.clear()
