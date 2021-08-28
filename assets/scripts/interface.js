@@ -55,6 +55,18 @@ function flipCard() {
                     let gameOverLayer = document.getElementById('gameOver')
                     calcFinalScore()
                     gameOverLayer.style.display = 'flex'
+                    let indexRanking = game.ranking.findIndex((rank) => game.totalScore > rank.pontos)
+                    if (indexRanking === -1) {
+                        setTimeout(() => {
+                            let btns = document.querySelectorAll('.btn')
+                            btns.forEach((btn) => {
+                                btn.style.display = 'flex'
+                            })
+                        }, 1500);
+                    } else {
+                        updateRank(indexRanking)
+                        showRank()
+                    }
                 }
             } else {
                 setTimeout(() => {
@@ -78,12 +90,27 @@ function flipCard() {
     }
 }
 
+function updateRank(index) {
+    let playerName = 'Anônimo'
+    let playerNameView = document.getElementById('rankingName').value
+    if (playerNameView != undefined && playerNameView != null && playerNameView != '') {
+        playerName = playerNameView
+    }
+    game.ranking[index] = new createRank(playerName, game.totalScore)
+}
+
+function createRank(name, score) {
+    this.nome = name,
+    this.pontos = score
+}
+
 function calcFinalScore() {
     let finalScore = document.getElementById('finalScore')
     let totBonus = Math.floor((game.bonusPoints - (game.timeCount * 10)) / (game.playCount / 10))
+    game.totalScore = totBonus + game.score
     finalScore.innerHTML = `Pontos Feitos = ${game.score}<br>`
     finalScore.innerHTML += `Bônus: (${game.bonusPoints} - (${game.timeCount} x 10)) / (${game.playCount} / 10) = ${totBonus}<br>`
-    finalScore.innerHTML += `Total = ${totBonus + game.score}`
+    finalScore.innerHTML += `Total = ${game.totalScore}`
 }
 
 function restart() {

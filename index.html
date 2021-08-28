@@ -37,6 +37,7 @@
         <div id="gameBoard">
         
         </div>
+
         <div id="gameOver">
             <h2>
                 Parabéns, você venceu!
@@ -45,8 +46,29 @@
                 Pontos feitos: 2000<br>
                 Bônus: (3000 - 1500) / (15 / 10) = 1000<br>
                 Total: 3500
+                <div id="addRank">
+                    Incrível! Você entrou no Top 5!<br>
+                    Adicione o seu nome no Ranking:
+                    <form>
+                        <input type="text" name="rankingName" id="rankingName" placeholder="Máx: 10 caracteres" maxlength="10">
+                    </form>
+                </div>
             </div>
-            <button id="restart" onclick="restart()">Jogar Novamente!</button>
+            <button class="btn" id="rankingBtn" onclick="updateRank()">Ver Ranking</button>
+            <button class="btn" id="restartFromScore" onclick="restart()">Jogar Novamente!</button>
+        </div>
+
+        <div id="rankingContainer">
+            <div id="ranking">
+                <div class="positions">
+                    <strong>1º lugar: AGRIPINOSO - 3800</strong><br>
+                    2º lugar: João - 3700<br>
+                    3º lugar: Maiara - 3600<br>
+                    4º lugar: Jenifer - 3500<br>
+                    5º lugar: AGRIPINOSA - 3400
+                </div>
+                <button class="btn" id="restartFromRank" onclick="restart()">Jogar Novamente!</button>
+            </div>
         </div>
     </div>
 
