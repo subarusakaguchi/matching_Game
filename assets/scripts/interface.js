@@ -87,7 +87,18 @@ function flipCard() {
                                     playerName = playerNameView
                                 }
 
-                                game.ranking[indexRanking] = new createRank(playerName, game.totalScore)
+                                let newWinner = new createRank(playerName, game.totalScore)
+                                console.log(game.ranking)
+                                game.ranking.push(newWinner)
+                                console.log(game.ranking)
+                                game.ranking.sort((a, b) => a.points < b.points ? 1 : -1)
+                                console.log(game.ranking)
+
+                                // if (game.ranking.length > 5) {
+                                //     game.ranking.pop()
+                                // }
+                                console.log(game.ranking)
+
                                 restartFromRank.style.display = 'flex'
 
                                 showRank()
@@ -135,8 +146,10 @@ function showRank() {
 }
 
 function createRank(name, score) {
-    this.nome = name,
-    this.pontos = score
+    return {
+        nome: name,
+        pontos: score
+    }
 }
 
 function calcFinalScore() {
