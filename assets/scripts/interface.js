@@ -71,6 +71,8 @@ function flipCard() {
                 game.clearCards()
                 addScore()
                 attScore()
+                addPlayCount()
+                attPlayCount()
                 if (game.checkGameOver()) {
                     let gameOverLayer = document.getElementById('gameOver')
                     calcFinalScore()
