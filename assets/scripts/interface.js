@@ -5,6 +5,19 @@ onload = function () {
     }
 }
 
+let formRank = document.getElementById('formRank')
+formRank.addEventListener('submit', (e) => {
+    e.preventDefault()
+    let rankingName = document.getElementById('rankingName')
+    let playerNameView = rankingName.value
+
+    if (playerNameView != undefined && playerNameView != null && playerNameView != '' && playerNameView != ' ') {
+        addToRank(playerNameView)
+    } else {
+        addToRank('Anônimo')
+    }
+})
+
 function initializeCards(cards) {
     let gameBoard = document.getElementById('gameBoard')
     gameBoard.innerHTML = ''
@@ -71,42 +84,8 @@ function flipCard() {
                             })
                         }, 1500);
                     } else {
-                        setTimeout(() => {
-                            console.log('teste')
-                            let addRank = document.getElementById('addRank')
-                            addRank.style.display = 'flex'
-                            let formRank = document.getElementById('formRank')
-                            formRank.addEventListener('submit', (e) => {
-                                e.preventDefault()
-                                let rankingName = document.getElementById('rankingName')
-                                let restartFromRank = document.getElementById('restartFromRank')
-                                let playerNameView = rankingName.value
-                                let playerName = 'Anônimo'
-
-                                if (playerNameView != undefined && playerNameView != null && playerNameView != '') {
-                                    playerName = playerNameView
-                                }
-
-                                let newWinner = new createRank(playerName, game.totalScore)
-                                console.log(game.ranking)
-                                game.ranking.push(newWinner)
-                                console.log(game.ranking)
-                                game.ranking.sort((a, b) => a.points < b.points ? 1 : -1)
-                                console.log(game.ranking)
-
-                                // if (game.ranking.length > 5) {
-                                //     game.ranking.pop()
-                                // }
-                                console.log(game.ranking)
-
-                                restartFromRank.style.display = 'flex'
-
-                                showRank()
-                                saveRank()
-                                rankingName.value = ''
-                            })
-                        }, 2000);
-
+                        let addRank = document.getElementById('addRank')
+                        addRank.style.display = 'flex'
                     }
                 }
             } else {
@@ -129,6 +108,23 @@ function flipCard() {
             }
         }
     }
+}
+
+function addToRank(name) {
+    let restartFromRank = document.getElementById('restartFromRank')
+    let newWinner = new createRank(name, game.totalScore)
+    game.ranking.push(newWinner)
+    game.ranking.sort((a, b) => a.pontos < b.pontos ? 1 : -1)
+
+    if (game.ranking.length > 5) {
+        game.ranking.pop()
+    }
+
+    restartFromRank.style.display = 'flex'
+
+    showRank()
+    saveRank()
+    rankingName.value = ''
 }
 
 function saveRank() {
@@ -167,6 +163,7 @@ function restart() {
     game.score = 0
     game.timeCount = 0
     game.playCount = 0
+    game.points = 200
 
     game.clearCards()
     attTimer()
