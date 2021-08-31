@@ -35,8 +35,9 @@ header {
 
 h1 {
     font-family: var(--mainFont);
-    font-size: clamp(48px, 6vw, 52rem);
+    font-size: clamp(46px, 6vw, 52rem);
     color: var(--darkBlue);
+    text-align: center;
 }
 
 input {
@@ -50,5 +51,5 @@ input {
 
 strong {
     color: var(--red);
-    font-size: clamp(45px, 5vw, 50rem);
+    font-size: clamp(30px, 5vw, 50rem);
 }

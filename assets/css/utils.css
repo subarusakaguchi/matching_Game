@@ -2,8 +2,9 @@
 #timer, #score, #playCount{
     font-family: var(--secondaryFont);
     font-weight: bold;
-    font-size: clamp(30px, 4vw, 36rem);
+    font-size: clamp(24px, 4vw, 36rem);
     color: var(--darkBlue);
+    text-align: center;
 }
 
 /* Body */
@@ -17,7 +18,7 @@
 }
 
 /* Card Design */
-.card{
+.card {
     width: 100rem;
     height: 150rem;
     position: relative;
@@ -65,9 +66,11 @@
     position: absolute;
     width: 100%;
     height: 100%;
+    padding: 10px;
     background-color: var(--transparentBlack);
     color: var(--yellow);
     font-size: clamp(45px, 4vw, 50rem);
+    text-align: center;
     display: none;
     justify-content: center;
     align-items: center;
@@ -115,14 +118,14 @@
 
 #ranking {
     background-color: var(--darkBlue);
-    min-width: 600px;
+    min-width: 300px;
     max-width: 800px;
     padding: 20px;
     border-radius: 8px;
 }
 
 .positions {
-    font-size: clamp(36px, 4vw, 40rem);
+    font-size: clamp(20px, 4vw, 40rem);
     color: var(--yellow);
 }
 
@@ -132,4 +135,16 @@
     align-items: center;
     font-size: clamp(28px, 3vw, 32rem);
     color: var(--red);
+}
+
+@media only screen and (max-width: 678px) {
+    #main {
+        padding-top: 180px;
+        padding-bottom: 20px;
+        height: 100%;
+    }
+
+    #gameBoard {
+        grid-template: 1fr 1fr 1fr 1fr 1fr 1fr 1fr / 1fr 1fr 1fr;
+    }
 }
