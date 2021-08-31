@@ -11,6 +11,7 @@ let game = {
     points: 200,
     bonusPoints: 3000,
     totalScore: 0,
+    // Nomes e pontos fictícios como forma de teste para o ranking
     ranking: [
         {nome: 'Pedro', pontos: 2500},
         {nome: 'João', pontos: 2300},
@@ -109,6 +110,10 @@ let game = {
             
             [this.cards[randomIndex], this.cards[currentIndex]] = [this.cards[currentIndex], this.cards[randomIndex]]
         }
+    },
+
+    saveRank: function () {
+        localStorage.setItem('rank', JSON.stringify(game.ranking))
     },
 
     checkGameOver: function () {

@@ -125,12 +125,8 @@ function addToRank(name) {
     restartFromRank.style.display = 'flex'
 
     showRank()
-    saveRank()
+    game.saveRank()
     rankingName.value = ''
-}
-
-function saveRank() {
-    localStorage.setItem('rank', JSON.stringify(game.ranking))
 }
 
 function showRank() {
