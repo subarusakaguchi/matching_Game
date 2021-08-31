@@ -33,6 +33,14 @@ header {
     z-index: 10000;
 }
 
+footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--lightGrey);
+    padding-bottom: 10px;
+}
+
 h1 {
     font-family: var(--mainFont);
     font-size: clamp(46px, 6vw, 52rem);
@@ -52,4 +60,14 @@ input {
 strong {
     color: var(--red);
     font-size: clamp(30px, 5vw, 50rem);
+}
+
+a {
+    font-family: var(--mainFont);
+    font-size: clamp(28px, 4vw, 34rem);
+    color: var(--darkBlue);
+}
+
+a:hover {
+    color: var(--yellow);
 }
